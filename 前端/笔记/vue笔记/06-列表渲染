@@ -1,0 +1,78 @@
+# 列表渲染
+
+通常我们会将一组数据保存在一个数组中，通过对数组的循环遍历，将数据以列表的形式进行渲染
+
+Vue提供了 `v-for`指令来实现了数组的渲染。
+
+## 一、基语法
+
+```html
+<ul>
+    <li v-for="item in students" :key="item">{{item}}</li>
+</ul>
+```
+
+语法说明：
+
+1、 `item`是任意变量名，用来接收数组中的每一个数据；
+
+2、 `students` 是需要循环的数组名；
+
+3、 `key`属性用来给每一个循环的元素身上添加一个唯一的值（只要求在当前的循环中不重复）；
+
+4、`{{item}}`： 循环过程中，我们使用 `{{}}`的形式来对 `item` 的数据进行渲染；
+
+## 二、列表渲染的下标
+
+```html
+<ul>
+    <li v-for="(item, index) in students" :key="index">
+        {{item}} - {{index}}
+    </li>
+</ul>
+```
+
+语法说明
+
+1、从语法层面来说， `index` 可以作为可以的值，但是在实际应用中，不建议用index作为key的值；
+
+## 四、v-for的key属性
+
+v-for中的key属性，有如下几个要求：
+
+1、key 属性的值，只能是数据或字符串；
+
+2、key属性的值，在当前循环中不能重复（唯一性）；
+
+3、key属性的值，建议保存固定不变（使用index不满足此条件）；
+
+例如：
+
+```html
+<template>
+    <div>
+        <ul>
+            <li v-for="item in person" :key="item.id">{{item.name}}</li>
+        </ul>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            person: [
+                { id: 1, name: "张三" },
+                { id: 2, name: "李四" },
+                { id: 3, name: "王五" },
+                { id: 4, name: "张三" },
+            ],
+        };
+    },
+};
+</script>
+
+<style>
+</style>
+```
+
