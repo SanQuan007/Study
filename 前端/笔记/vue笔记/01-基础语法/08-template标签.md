@@ -44,21 +44,21 @@ Vue中提供了一个特殊标签 `<template>`,这是一个空标签，可以在
 
 ```html
 <tbody>
-                <template v-for="item in goods">
-                    <tr v-if="item.count" :key="item.id">
-                        <td>{{item.id}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.price}}</td>
-                        <td>
-                            <button @click="item.count--">-</button>
-                            {{item.count}}
-                            <button @click="item.count++">+</button>
-                        </td>
-                        <td>{{item.price * item.count}}</td>
-                        <td><button @click="item.count = 0">删除</button></td>
-                    </tr>
-                </template>
-            </tbody>
+    <template v-for="item in goods">
+        <tr v-if="item.count" :key="item.id">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>
+                <button @click="item.count--">-</button>
+                {{item.count}}
+                <button @click="item.count++">+</button>
+            </td>
+            <td>{{item.price * item.count}}</td>
+            <td><button @click="item.count = 0">删除</button></td>
+        </tr>
+    </template>
+</tbody>
 ```
 
 说明：
